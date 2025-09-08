@@ -1,0 +1,72 @@
+.room4intro {
+    position: relative;
+    min-height: 100dvh;
+    width: 100%;
+    background: center / cover no-repeat;
+    overflow: hidden;
+    display: grid;
+    place-items: center;
+    padding: clamp(16px, 3vw, 32px);
+
+    .panel {
+        width: min(900px, 92vw);
+        backdrop-filter: blur(6px);
+        background: rgba(14, 16, 22, 0.6);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        border-radius: 20px;
+        padding: clamp(16px, 3vw, 28px);
+        color: #e9edf7;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.35);
+
+        h1 {
+            margin: 0 0 8px;
+            font-size: clamp(24px, 3.2vw, 36px);
+            letter-spacing: 0.5px;
+        }
+
+        .lede {
+            margin: 0 0 12px;
+            font-size: clamp(16px, 1.6vw, 18px);
+            opacity: 0.95;
+            line-height: 1.5;
+        }
+
+        .quote {
+            margin: 0 0 16px;
+            font-style: italic;
+            opacity: 0.9;
+        }
+
+        .instructions {
+            ul {
+                margin: 8px 0 0 18px;
+
+                li {
+                    margin: 6px 0;
+                }
+            }
+        }
+
+        .cta {
+            margin-top: clamp(14px, 2vw, 20px);
+            padding: 10px 16px;
+            border: 1px solid rgba(255,255,255,0.25);
+            border-radius: 12px;
+            background: rgba(255,255,255,0.08);
+            color: #fff;
+            cursor: pointer;
+            font-weight: 600;
+            letter-spacing: 0.3px;
+            transition: transform 120ms ease, background 120ms ease;
+
+            &:hover {
+                transform: translateY(-1px);
+                background: rgba(255,255,255,0.12);
+            }
+
+            &:active {
+                transform: translateY(0);
+            }
+        }
+    }
+}

@@ -1,0 +1,399 @@
+.room1 {
+    position: relative;
+    min-height: 100dvh;
+    background: center / cover no-repeat;
+    overflow: hidden;
+    color: #e9edf7;
+    /* --- HINT / START NODES (no shift) --- */
+    .node {
+        --nodeSize: clamp(10px, 2vw, 18px);
+        position: absolute;
+        left: 0;
+        top: 0; /* actual pos via inline styles */
+        transform: translate(-50%, -50%);
+        z-index: 3;
+        width: var(--nodeSize);
+        height: var(--nodeSize);
+        overflow: visible; /* hint can overflow */
+        pointer-events: none; /* container ignores clicks */
+
+        .node-btn {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+            isolation: isolate;
+            opacity: 0.35;
+            transition: opacity 0.2s ease, transform 0.15s ease;
+            outline: none;
+            pointer-events: auto; /* clickable */
+
+            .node-pulse,
+            .node-core {
+                position: absolute;
+                inset: 0;
+                border-radius: 50%;
+            }
+
+            .node-pulse {
+                background: radial-gradient( circle at 50% 50%, color-mix(in oklab, var(--nodeColor, #88aaff), transparent 70%) 0%, transparent 80% );
+                filter: blur(6px);
+                opacity: 0.2;
+                animation: nodePulse 3s ease-in-out infinite;
+                pointer-events: none;
+                mix-blend-mode: screen;
+            }
+            /* no white core */
+            .node-core {
+                background: radial-gradient( circle at 50% 50%, color-mix(in oklab, var(--nodeColor, #88aaff), #000 30%) 0%, transparent 80% );
+                box-shadow: none;
+            }
+
+            &:hover {
+                opacity: 0.85;
+                transform: scale(1.05);
+                transform-origin: center;
+            }
+
+            &:active {
+                transform: scale(0.95);
+                transform-origin: center;
+            }
+        }
+        /* Hint shown BELOW the node; does not affect node position */
+        .node-hint {
+            position: absolute;
+            top: calc(100% + 8px);
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 4;
+            pointer-events: auto;
+            background: rgba(12, 14, 20, 0.85);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 10px;
+            padding: 0.4rem 0.6rem;
+            width: max-content;
+            max-width: 220px;
+            color: #e9edf7;
+            font-size: clamp(12px, 1.8vw, 14px);
+            text-align: center;
+            box-shadow: 0 6px 14px rgba(0, 0, 0, 0.4);
+
+            h4 {
+                margin: 0 0 0.2rem;
+                font-size: clamp(13px, 1.9vw, 15px);
+                color: #cfe1ff;
+            }
+
+            p {
+                margin: 0;
+                font-size: clamp(11px, 1.6vw, 13px);
+                color: #bcd2ff;
+            }
+        }
+    }
+
+    @keyframes nodePulse {
+        0%, 100% {
+            opacity: 0.6;
+            transform: scale(1);
+        }
+
+        50% {
+            opacity: 0.95;
+            transform: scale(1.06);
+        }
+    }
+    /* --- START NODE OVERRIDES (Begin Ritual) --- */
+    .node-start {
+        width: auto;
+        height: auto;
+    }
+    /* not limited by --nodeSize */
+    .node-start .start-btn {
+        position: relative;
+        width: clamp(140px, 22vw, 220px);
+        height: clamp(44px, 6.5vw, 56px);
+        border-radius: 999px;
+        border: 1px solid rgba(255, 255, 255, 0.16);
+        display: grid;
+        place-items: center;
+        pointer-events: auto;
+
+        .node-pulse {
+            filter: blur(16px);
+            opacity: 0.35;
+        }
+
+        .node-core {
+            background: linear-gradient(180deg, rgba(110,140,255,.25), rgba(60,80,160,.25));
+            box-shadow: inset 0 0 14px rgba(255,255,255,.18), 0 10px 30px rgba(0,0,0,.35);
+        }
+
+        .start-label {
+            position: relative;
+            z-index: 2;
+            color: black; /* pure white */
+            font-weight: 700;
+            letter-spacing: .4px;
+            text-shadow: 0 1px 2px rgba(0,0,0,.45);
+            font-size: clamp(14px, 2vw, 16px);
+        }
+
+        &:hover {
+            transform: scale(1.03);
+        }
+
+        &:active {
+            transform: scale(0.99);
+        }
+    }
+    /* -------- LANTERNS -------- */
+    .lantern {
+        position: absolute;
+        transform: translate(-50%, 0);
+        width: clamp(80px, 12vw, 160px);
+        aspect-ratio: 1/1.9;
+        background: transparent;
+        border: none;
+        padding: 0;
+        cursor: pointer;
+        filter: drop-shadow(0 6px 14px rgba(0, 0, 0, 0.5));
+        transition: transform 0.12s ease;
+        z-index: 2;
+
+        &:hover {
+            transform: translate(-50%, 0) scale(1.02);
+        }
+
+        &:disabled {
+            cursor: not-allowed;
+            filter: grayscale(0.15) drop-shadow(0 4px 10px rgba(0, 0, 0, 0.4));
+        }
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            pointer-events: none;
+            user-select: none;
+        }
+
+        &::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(50% 60% at 50% 25%, rgba(255, 255, 255, 0.05), transparent 60%);
+            opacity: 0.6;
+            pointer-events: none;
+            mix-blend-mode: screen;
+            transition: opacity 0.25s ease;
+        }
+
+        .glow {
+            --hue: 0deg;
+            position: absolute;
+            inset: -6%;
+            border-radius: 10px;
+            filter: blur(14px);
+            opacity: 0;
+            transition: opacity 0.25s ease;
+            background: radial-gradient(40% 30% at 50% 22%, hsla(var(--hue), 90%, 72%, .9), transparent 60%), radial-gradient(60% 40% at 50% 25%, hsla(var(--hue), 90%, 60%, .5), transparent 70%);
+            mix-blend-mode: screen;
+            pointer-events: none;
+        }
+
+        &.is-lit {
+            &::after {
+                opacity: 0.85;
+            }
+
+            .glow {
+                opacity: 1;
+            }
+
+            animation: flicker 0.9s infinite steps(2, end);
+        }
+    }
+
+    @keyframes flicker {
+        0% {
+            filter: brightness(1) drop-shadow(0 6px 14px rgba(0,0,0,.5));
+        }
+
+        50% {
+            filter: brightness(1.15) drop-shadow(0 8px 18px rgba(0,0,0,.6));
+        }
+
+        100% {
+            filter: brightness(1) drop-shadow(0 6px 14px rgba(0,0,0,.5));
+        }
+    }
+    /* -------- CURSED DECOY -------- */
+    .decoy {
+        position: absolute;
+        width: clamp(44px, 6vw, 70px);
+        height: clamp(44px, 6vw, 70px);
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        transform: translate(-50%, -50%);
+        z-index: 2;
+
+        .wisp {
+            position: absolute;
+            inset: 0;
+            border-radius: 50%;
+            background: radial-gradient( circle at 50% 50%, rgba(150, 120, 255, 0.25), rgba(90, 70, 150, 0.05) 60%, transparent 70% );
+            filter: blur(8px);
+            animation: wispFloat 2.4s ease-in-out infinite;
+            pointer-events: none;
+            mix-blend-mode: screen;
+        }
+    }
+
+    @keyframes wispFloat {
+        0%, 100% {
+            transform: translateY(0);
+            opacity: 0.65;
+        }
+
+        50% {
+            transform: translateY(-6px);
+            opacity: 0.85;
+        }
+    }
+    /* -------- JUMPSCARE -------- */
+    .jumpscare {
+        position: absolute;
+        inset: 0;
+        display: grid;
+        place-items: center;
+        background: rgba(0, 0, 0, 0.85);
+        animation: flash 0.12s ease-in;
+        z-index: 5;
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.95;
+        }
+    }
+
+    @keyframes flash {
+        from {
+            opacity: 0;
+        }
+
+        to {
+            opacity: 1;
+        }
+    }
+    /* -------- CLUE DIALOG -------- */
+    .clue {
+        position: absolute;
+        inset: 0;
+        display: grid;
+        place-items: center;
+        background: rgba(5, 6, 10, 0.7);
+        backdrop-filter: blur(3px);
+        z-index: 6;
+
+        .page {
+            width: min(540px, 82vw);
+            aspect-ratio: 4/3;
+            object-fit: contain;
+            filter: drop-shadow(0 20px 50px rgba(0, 0, 0, 0.5));
+            animation: pop 0.18s ease-out;
+        }
+
+        .clue-text {
+            margin-top: 1rem;
+            width: min(640px, 90vw);
+            text-align: center;
+            background: rgba(12, 14, 20, 0.55);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 0.85rem 1rem;
+
+            h2 {
+                margin: 0 0 0.4rem;
+                font-size: clamp(18px, 2.5vw, 22px);
+            }
+
+            p {
+                margin: 0;
+                font-size: clamp(13px, 1.7vw, 16px);
+                color: #cfe1ff;
+            }
+        }
+
+        .actions {
+            margin-top: 0.85rem;
+            display: flex;
+            gap: 0.6rem;
+            justify-content: center;
+
+            .btn {
+                padding: 0.6rem 1rem;
+                border-radius: 10px;
+                border: 1px solid rgba(255, 255, 255, 0.1);
+                background: rgba(30, 36, 52, 0.8);
+                color: #eaf1ff;
+                cursor: pointer;
+                transition: transform 0.1s ease, box-shadow 0.2s ease;
+
+                &:hover {
+                    transform: translateY(-1px);
+                    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.35);
+                }
+
+                &:active {
+                    transform: translateY(0);
+                }
+            }
+        }
+    }
+
+    @keyframes pop {
+        from {
+            transform: scale(0.96);
+            opacity: 0;
+        }
+
+        to {
+            transform: scale(1);
+            opacity: 1;
+        }
+    }
+}
+
+/* -------- CLOSE LANTERNS BUTTON -------- */
+.close-lanterns-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    padding: 0.6rem 1.2rem;
+    background: rgba(80, 20, 20, 0.85);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 8px;
+    color: #fff;
+    font-size: clamp(14px, 2vw, 16px);
+    font-weight: 600;
+    cursor: pointer;
+    z-index: 9999;
+    transition: background 0.2s ease, transform 0.1s ease;
+
+    &:hover {
+        background: rgba(120, 40, 40, 0.95);
+        transform: translateY(-1px);
+    }
+
+    &:active {
+        transform: translateY(0);
+    }
+}

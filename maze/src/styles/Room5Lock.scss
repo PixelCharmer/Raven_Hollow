@@ -1,0 +1,158 @@
+.room5lock {
+    min-height: 100dvh;
+    display: grid;
+    place-items: center;
+    background: radial-gradient(1200px 600px at 50% 70%, #0f1622 0%, #0b1018 55%, #070a10 100%);
+    color: #e9edf7;
+    padding: 16px;
+}
+
+.pad {
+    width: min(92vw, 560px);
+    background: linear-gradient(180deg, #0e1218, #0b0f14);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 14px;
+    box-shadow: 0 12px 40px rgba(0,0,0,0.6);
+    padding: 18px;
+
+    &.error {
+        animation: shake .4s ease;
+    }
+
+    &.success {
+        box-shadow: 0 0 0 2px rgba(80,230,150,0.35), 0 12px 40px rgba(0,0,0,0.6);
+    }
+
+    h3 {
+        margin: 0 0 14px;
+        font-size: clamp(18px, 2.2vw, 22px);
+    }
+
+    .digits {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 12px;
+        margin-bottom: 14px;
+
+        .digit {
+            display: grid;
+            grid-template-rows: auto 70px auto;
+            place-items: center;
+
+            .arrow {
+                width: 60px;
+                height: 40px;
+                border-radius: 10px;
+                border: 1px solid rgba(255,255,255,0.15);
+                background: linear-gradient(180deg, rgba(255,255,255,0.07), rgba(255,255,255,0.04));
+                color: #e9edf7;
+                cursor: pointer;
+                font-size: 18px;
+                transition: transform 120ms ease, background 120ms ease;
+                display: grid;
+                place-items: center;
+
+                &:hover {
+                    background: rgba(255,255,255,0.12);
+                    transform: translateY(-1px);
+                }
+
+                &.down:hover {
+                    transform: translateY(1px);
+                }
+            }
+
+            .value-wrap {
+                width: 70px;
+                height: 70px;
+                position: relative;
+                border-radius: 12px;
+                background: linear-gradient(180deg, #1a2029, #12161d);
+                border: 1px solid rgba(255,255,255,0.14);
+                box-shadow: inset 0 1px 0 rgba(255,255,255,0.08), inset 0 -3px 8px rgba(0,0,0,0.6);
+                display: grid;
+                place-items: center;
+            }
+
+            .value-shadow {
+                position: absolute;
+                inset: 0;
+                border-radius: 12px;
+                background: radial-gradient(70% 50% at 50% 20%, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0) 60%), radial-gradient(70% 50% at 50% 90%, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0) 60%);
+                pointer-events: none;
+            }
+
+            .value {
+                position: relative;
+                font-size: 30px;
+                font-weight: 800;
+                letter-spacing: 0.04em;
+                text-shadow: 0 1px 0 rgba(0,0,0,0.6);
+            }
+        }
+    }
+
+    .pad-actions {
+        display: flex;
+        gap: 10px;
+        justify-content: flex-end;
+        margin-top: 6px;
+
+        .btn {
+            min-width: 116px;
+            height: 42px;
+            border-radius: 10px;
+            border: 1px solid rgba(255,255,255,0.15);
+            background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.05));
+            color: #e9edf7;
+            cursor: pointer;
+            font-weight: 700;
+            transition: background 120ms ease, transform 120ms ease;
+
+            &:hover {
+                background: rgba(255,255,255,0.14);
+                transform: translateY(-1px);
+            }
+        }
+
+        .submit {
+            border-color: rgba(80,230,150,0.4);
+            box-shadow: inset 0 0 0 1px rgba(80,230,150,0.22);
+        }
+    }
+
+    .feedback {
+        margin-top: 10px;
+        font-size: 0.95rem;
+
+        &.error {
+            color: #ff9a9a;
+        }
+
+        &.success {
+            color: #7bf2b2;
+        }
+    }
+}
+
+@keyframes shake {
+    0% {
+        transform: translateX(0);
+    }
+
+    25% {
+        transform: translateX(-6px);
+    }
+
+    50% {
+        transform: translateX(5px);
+    }
+
+    75% {
+        transform: translateX(-4px);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+}

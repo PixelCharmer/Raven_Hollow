@@ -1,0 +1,83 @@
+/* src/styles/GameStart.scss */
+
+.game-start {
+    position: relative;
+    min-height: 100dvh;
+    background: center / cover no-repeat;
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+
+    .scrim {
+        position: absolute;
+        inset: 0;
+        background: radial-gradient( ellipse at center, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.75) 60% );
+        pointer-events: none;
+    }
+
+    .content {
+        position: relative;
+        width: min(950px, 92vw);
+        padding: clamp(16px, 3vw, 32px);
+        backdrop-filter: blur(2px);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 16px;
+        background: rgba(10, 10, 12, 0.45);
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.45);
+        color: #e9ecf1;
+        animation: fadeUp 0.8s ease both;
+    }
+
+    .title {
+        font-size: clamp(28px, 4vw, 44px);
+        letter-spacing: 0.02em;
+        margin: 0 0 0.5em;
+    }
+
+    .narration,
+    .whispers {
+        line-height: 1.55;
+        font-size: clamp(14px, 1.75vw, 18px);
+        color: #d7ddea;
+    }
+
+    .whispers {
+        margin-top: 0.6em;
+        color: #b6c0d8;
+        font-style: italic;
+    }
+
+    .cta {
+        margin-top: 1.25rem;
+        padding: 0.9rem 1.25rem;
+        font-size: clamp(15px, 2vw, 18px);
+        border-radius: 12px;
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        background: linear-gradient(180deg, #2a364d, #1f283a);
+        color: #eef3ff;
+        cursor: pointer;
+        transition: transform 0.15s ease, box-shadow 0.2s ease, background 0.2s ease;
+        box-shadow: 0 10px 24px rgba(0, 0, 0, 0.35), inset 0 0 0 0 rgba(255, 255, 255, 0);
+
+        &:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.45);
+        }
+
+        &:active {
+            transform: translateY(0);
+        }
+    }
+}
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

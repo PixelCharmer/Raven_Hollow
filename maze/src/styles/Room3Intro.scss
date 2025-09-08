@@ -1,0 +1,84 @@
+.room3intro {
+    position: relative;
+    min-height: 100dvh;
+    width: 100%;
+    background: center / cover no-repeat;
+    overflow: hidden;
+
+    .elsie {
+        position: absolute;
+        left: clamp(6%, 9vw, 12%);
+        bottom: 0;
+        height: min(52vh, 620px);
+        transform: translateY(-6%);
+        object-fit: contain;
+        pointer-events: none;
+        animation: elsiePulse 2.8s ease-in-out infinite;
+    }
+
+    @keyframes elsiePulse {
+        0%, 100% {
+            opacity: 0.88;
+            filter: drop-shadow(0 0 0px rgba(255,255,255,0.2));
+        }
+
+        50% {
+            opacity: 1;
+            filter: drop-shadow(0 0 10px rgba(255,255,255,0.25));
+        }
+    }
+
+    .intro-copy {
+        position: absolute;
+        left: 50%;
+        bottom: clamp(16px, 6vh, 56px);
+        transform: translateX(-50%);
+        width: min(92vw, 900px);
+        padding: clamp(12px, 2.2vh, 22px);
+        border-radius: 14px;
+        background: rgba(10, 10, 12, 0.58);
+        color: #e9edf7;
+        line-height: 1.5;
+        font-size: clamp(14px, 2.2vw, 18px);
+        text-shadow: 0 1px 2px rgba(0,0,0,0.6);
+
+        .begin-btn {
+            margin-top: clamp(10px, 1.8vh, 18px);
+            padding: 10px 16px;
+            font-size: clamp(14px, 2vw, 16px);
+            border: 1px solid rgba(255,255,255,0.3);
+            border-radius: 10px;
+            background: rgba(255,255,255,0.06);
+            color: #fff;
+            cursor: pointer;
+            transition: transform 120ms ease, background 120ms ease;
+
+            &:hover {
+                transform: translateY(-1px);
+                background: rgba(255,255,255,0.12);
+            }
+
+            &:active {
+                transform: translateY(0);
+            }
+        }
+    }
+
+    .screen-hotspot {
+        position: absolute;
+        inset: 0;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        z-index: 1;
+    }
+    /* keep .intro-copy absolute */
+    .intro-copy {
+        z-index: 2; /* no position override here */
+    }
+    /* only the button needs relative stacking */
+    .intro-copy .begin-btn {
+        position: relative;
+        z-index: 3;
+    }
+}

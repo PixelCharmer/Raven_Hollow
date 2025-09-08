@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="600" height="600" viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">
+	<defs>
+		<style>
+			.let {
+			font-size: 22px;
+			text-anchor: middle;
+			dominant-baseline: middle;
+			font-family: "Cinzel","Trajan Pro","Georgia",serif;
+			fill: #f4e7c9;
+			}
+			.guide { fill: none; stroke: #d4a373; stroke-opacity: .25; }
+			.ring  { fill: none; stroke: #d4a373; stroke-width: 2; stroke-opacity: .55; }
+			.ticks { stroke: #d4a373; stroke-opacity: .35; }
+		</style>
+	</defs>
+
+	<!-- Guides (delete if you don’t want visible build guides) -->
+	<circle class="guide" cx="300" cy="300" r="220"/>
+	<circle class="guide" cx="300" cy="300" r="200"/>
+	<line class="guide" x1="300" y1="0" x2="300" y2="600"/>
+	<line class="guide" x1="0" y1="300" x2="600" y2="300"/>
+
+	<!-- Decorative inner ring -->
+	<circle class="ring" cx="300" cy="300" r="212"/>
+	<circle class="ring" cx="300" cy="300" r="188"/>
+
+	<!-- Minor ticks (optional) -->
+	<g class="ticks" transform="translate(300,300)">
+		<!-- 26 ticks at r=206..212 -->
+		<g>
+			<g transform="rotate(-90)">
+				<line x1="0" y1="-212" x2="0" y2="-206" stroke-width="2"/>
+			</g>
+			<g transform="rotate(-76.1538462)">
+				<line x1="0" y1="-212" x2="0" y2="-206" stroke-width="2"/>
+			</g>
+			<g transform="rotate(-62.3076924)">
+				<line x1="0" y1="-212" x2="0" y2="-206" stroke-width="2"/>
+			</g>
+			<g transform="rotate(-48.4615386)">
+				<line x1="0" y1="-212" x2="0" y2="-206" stroke-width="2"/>
+			</g>
+			<g transform="rotate(-34.6153848)">
+				<line x1="0" y1="-212" x2="0" y2="-206" stroke-width="2"/>
+			</g>
+			<g transform="rotate(-20.769231)">
+				<line x1="0" y1="-212" x2="0" y2="-206" stroke-width="2"/>
+			</g>
+			<g transform="rotate(-6.9230772)">
+				<line x1="0" y1="-212" x2="0" y2="-206" stroke-width="2"/>
+			</g>
+			<g transform="rotate(6.9230766)">
+				<line x1="0" y1="-212" x2="0" y2="-206" stroke-width="2"/>
+			</g>
+			<g transform="rotate(20.7692304)">
+				<line x1="0" y1="-212" x2="0" y2="-206" stroke-width="2"/>
+			</g>
+			<g transform="rotate(34.6153842)">
+				<line x1="0" y1="-212" x2="0" y2="-206" stroke-width="2"/>
+			</g>
+			<g transform="rotate(48.461538)">
+				<line x1="0" y1="-212" x2="0" y2="-206" stroke-width="2"/>
+			</g>
+			<g transform="rotate(62.3076918)">
+				<line x1="0" y1="-212" x2="0" y2="-206" stroke-width="2"/>
+			</g>
+			<g transform="rotate(76.1538456)">
+				<line x1="0" y1="-212" x2="0" y2="-206" stroke-width="2"/>
+			</g>
+			<g transform="rotate(90)">
+				<line x1="0" y1="-212" x2="0" y2="-206" stroke-width="2"/>
+			</g>
+			<g transform="rotate(103.846154)">
+				<line x1="0" y1="-212" x2="0" y2="-206" stroke-width="2"/>
+			</g>
+			<g transform="rotate(117.692308)">
+				<line x1="0" y1="-212" x2="0" y2="-206" stroke-width="2"/>
+			</g>
+			<g transform="rotate(131.538462)">
+				<line x1="0" y1="-212" x2="0" y2="-206" stroke-width="2"/>
+			</g>
+			<g transform="rotate(145.384616)">
+				<line x1="0" y1="-212" x2="0" y2="-206" stroke-width="2"/>
+			</g>
+			<g transform="rotate(159.23077)">
+				<line x1="0" y1="-212" x2="0" y2="-206" stroke-width="2"/>
+			</g>
+			<g transform="rotate(173.076924)">
+				<line x1="0" y1="-212" x2="0" y2="-206" stroke-width="2"/>
+			</g>
+			<g transform="rotate(186.923078)">
+				<line x1="0" y1="-212" x2="0" y2="-206" stroke-width="2"/>
+			</g>
+			<g transform="rotate(200.769232)">
+				<line x1="0" y1="-212" x2="0" y2="-206" stroke-width="2"/>
+			</g>
+			<g transform="rotate(214.615386)">
+				<line x1="0" y1="-212" x2="0" y2="-206" stroke-width="2"/>
+			</g>
+			<g transform="rotate(228.46154)">
+				<line x1="0" y1="-212" x2="0" y2="-206" stroke-width="2"/>
+			</g>
+			<g transform="rotate(242.307694)">
+				<line x1="0" y1="-212" x2="0" y2="-206" stroke-width="2"/>
+			</g>
+			<g transform="rotate(256.153848)">
+				<line x1="0" y1="-212" x2="0" y2="-206" stroke-width="2"/>
+			</g>
+		</g>
+	</g>
+
+	<!-- Letters A–Z -->
+	<g transform="translate(300,300)">
+		<!-- Place letters at smaller radius so they sit inside outer symbols -->
+		<!-- Use same angular step; start at -90° to match index alignment -->
+		<!-- r = 200 -->
+		<text class="let" transform="rotate(-90) translate(0,-200)">A</text>
+		<text class="let" transform="rotate(-76.1538462) translate(0,-200)">B</text>
+		<text class="let" transform="rotate(-62.3076924) translate(0,-200)">C</text>
+		<text class="let" transform="rotate(-48.4615386) translate(0,-200)">D</text>
+		<text class="let" transform="rotate(-34.6153848) translate(0,-200)">E</text>
+		<text class="let" transform="rotate(-20.769231) translate(0,-200)">F</text>
+		<text class="let" transform="rotate(-6.9230772) translate(0,-200)">G</text>
+		<text class="let" transform="rotate(6.9230766) translate(0,-200)">H</text>
+		<text class="let" transform="rotate(20.7692304) translate(0,-200)">I</text>
+		<text class="let" transform="rotate(34.6153842) translate(0,-200)">J</text>
+		<text class="let" transform="rotate(48.461538) translate(0,-200)">K</text>
+		<text class="let" transform="rotate(62.3076918) translate(0,-200)">L</text>
+		<text class="let" transform="rotate(76.1538456) translate(0,-200)">M</text>
+		<text class="let" transform="rotate(90) translate(0,-200)">N</text>
+		<text class="let" transform="rotate(103.846154) translate(0,-200)">O</text>
+		<text class="let" transform="rotate(117.692308) translate(0,-200)">P</text>
+		<text class="let" transform="rotate(131.538462) translate(0,-200)">Q</text>
+		<text class="let" transform="rotate(145.384616) translate(0,-200)">R</text>
+		<text class="let" transform="rotate(159.23077) translate(0,-200)">S</text>
+		<text class="let" transform="rotate(173.076924) translate(0,-200)">T</text>
+		<text class="let" transform="rotate(186.923078) translate(0,-200)">U</text>
+		<text class="let" transform="rotate(200.769232) translate(0,-200)">V</text>
+		<text class="let" transform="rotate(214.615386) translate(0,-200)">W</text>
+		<text class="let" transform="rotate(228.46154) translate(0,-200)">X</text>
+		<text class="let" transform="rotate(242.307694) translate(0,-200)">Y</text>
+		<text class="let" transform="rotate(256.153848) translate(0,-200)">Z</text>
+	</g>
+</svg>

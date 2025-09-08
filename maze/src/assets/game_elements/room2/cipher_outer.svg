@@ -1,0 +1,117 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<svg width="600" height="600" viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      /* Tweak fonts as needed; symbols generally render across these fallbacks */
+      .sym {
+        font-size: 28px;
+        text-anchor: middle;
+        dominant-baseline: middle;
+        font-family: "Noto Sans Symbols 2","Segoe UI Symbol","Apple Color Emoji","Noto Color Emoji",sans-serif;
+        fill: #f4e7c9;
+      }
+      .guide { fill: none; stroke: #d4a373; stroke-opacity: .3; }
+      .ring  { fill: none; stroke: #d4a373; stroke-width: 2; stroke-opacity: .55; }
+      .ticks { stroke: #d4a373; stroke-opacity: .45; }
+    </style>
+  </defs>
+
+  <!-- Guides (delete if you don’t want visible build guides) -->
+  <circle class="guide" cx="300" cy="300" r="280"/>
+  <circle class="guide" cx="300" cy="300" r="260"/>
+  <line class="guide" x1="300" y1="0" x2="300" y2="600"/>
+  <line class="guide" x1="0" y1="300" x2="600" y2="300"/>
+
+  <!-- Decorative ring -->
+  <circle class="ring" cx="300" cy="300" r="270"/>
+  <circle class="ring" cx="300" cy="300" r="245"/>
+
+  <!-- Major tick marks every 26 positions -->
+  <g class="ticks">
+    <!-- Generated ticks at angle step 360/26 = 13.8461538° -->
+    <!-- Outer tick radius -->
+    <g transform="translate(300,300)">
+      <!-- render 26 ticks -->
+      <g>
+        <!-- JS-like loop concept; here expanded manually -->
+        <!-- We place ticks at r=258..265 -->
+        <!-- I’ll list 26 lines rotated by k*13.846... degrees -->
+        <!-- Tick length ~7 -->
+        <!-- k = 0..25 -->
+        <!-- Using small path for each tick -->
+        <!-- You can safely remove this whole group if you don’t want ticks -->
+        <!-- k0 -->
+        <g transform="rotate(0)">
+          <line x1="0" y1="-265" x2="0" y2="-258" stroke-width="2"/>
+        </g>
+        <!-- k1 -->
+        <g transform="rotate(13.8461538)">
+          <line x1="0" y1="-265" x2="0" y2="-258" stroke-width="2"/>
+        </g>
+        <g transform="rotate(27.6923076)"><line x1="0" y1="-265" x2="0" y2="-258" stroke-width="2"/></g>
+        <g transform="rotate(41.5384614)"><line x1="0" y1="-265" x2="0" y2="-258" stroke-width="2"/></g>
+        <g transform="rotate(55.3846152)"><line x1="0" y1="-265" x2="0" y2="-258" stroke-width="2"/></g>
+        <g transform="rotate(69.230769)"><line x1="0" y1="-265" x2="0" y2="-258" stroke-width="2"/></g>
+        <g transform="rotate(83.0769228)"><line x1="0" y1="-265" x2="0" y2="-258" stroke-width="2"/></g>
+        <g transform="rotate(96.9230766)"><line x1="0" y1="-265" x2="0" y2="-258" stroke-width="2"/></g>
+        <g transform="rotate(110.7692304)"><line x1="0" y1="-265" x2="0" y2="-258" stroke-width="2"/></g>
+        <g transform="rotate(124.6153842)"><line x1="0" y1="-265" x2="0" y2="-258" stroke-width="2"/></g>
+        <g transform="rotate(138.461538)"><line x1="0" y1="-265" x2="0" y2="-258" stroke-width="2"/></g>
+        <g transform="rotate(152.3076918)"><line x1="0" y1="-265" x2="0" y2="-258" stroke-width="2"/></g>
+        <g transform="rotate(166.1538456)"><line x1="0" y1="-265" x2="0" y2="-258" stroke-width="2"/></g>
+        <g transform="rotate(180)"><line x1="0" y1="-265" x2="0" y2="-258" stroke-width="2"/></g>
+        <g transform="rotate(193.846154)"><line x1="0" y1="-265" x2="0" y2="-258" stroke-width="2"/></g>
+        <g transform="rotate(207.692308)"><line x1="0" y1="-265" x2="0" y2="-258" stroke-width="2"/></g>
+        <g transform="rotate(221.538462)"><line x1="0" y1="-265" x2="0" y2="-258" stroke-width="2"/></g>
+        <g transform="rotate(235.384616)"><line x1="0" y1="-265" x2="0" y2="-258" stroke-width="2"/></g>
+        <g transform="rotate(249.23077)"><line x1="0" y1="-265" x2="0" y2="-258" stroke-width="2"/></g>
+        <g transform="rotate(263.076924)"><line x1="0" y1="-265" x2="0" y2="-258" stroke-width="2"/></g>
+        <g transform="rotate(276.923078)"><line x1="0" y1="-265" x2="0" y2="-258" stroke-width="2"/></g>
+        <g transform="rotate(290.769232)"><line x1="0" y1="-265" x2="0" y2="-258" stroke-width="2"/></g>
+        <g transform="rotate(304.615386)"><line x1="0" y1="-265" x2="0" y2="-258" stroke-width="2"/></g>
+        <g transform="rotate(318.46154)"><line x1="0" y1="-265" x2="0" y2="-258" stroke-width="2"/></g>
+        <g transform="rotate(332.307694)"><line x1="0" y1="-265" x2="0" y2="-258" stroke-width="2"/></g>
+        <g transform="rotate(346.153848)"><line x1="0" y1="-265" x2="0" y2="-258" stroke-width="2"/></g>
+      </g>
+    </g>
+  </g>
+
+  <!-- Symbols (A→Z mapped to your SYMBOLS order) -->
+  <!-- SYMBOLS = [◆,◇,■,□,●,○,▲,△,★,✦,✧,✪,✫,☀,☁,☂,☃,☄,☾,☽,♠,♣,♥,♦,♜,♞] -->
+  <!-- We place first symbol at the top (−90° visually), so start angle = -90 -->
+  <g transform="translate(300,300)">
+    <!-- radius at which text sits -->
+    <g id="symbols" font-size="28">
+      <!-- render 26 at equal steps -->
+      <!-- helper: angle(k) = -90 + k*(360/26) -->
+      <!-- r = 250 -->
+      <!-- k=0..25 -->
+      <text class="sym" transform="rotate(-90) translate(0,-250)">◆</text>
+      <text class="sym" transform="rotate(-76.1538462) translate(0,-250)">◇</text>
+      <text class="sym" transform="rotate(-62.3076924) translate(0,-250)">■</text>
+      <text class="sym" transform="rotate(-48.4615386) translate(0,-250)">□</text>
+      <text class="sym" transform="rotate(-34.6153848) translate(0,-250)">●</text>
+      <text class="sym" transform="rotate(-20.769231) translate(0,-250)">○</text>
+      <text class="sym" transform="rotate(-6.9230772) translate(0,-250)">▲</text>
+      <text class="sym" transform="rotate(6.9230766) translate(0,-250)">△</text>
+      <text class="sym" transform="rotate(20.7692304) translate(0,-250)">★</text>
+      <text class="sym" transform="rotate(34.6153842) translate(0,-250)">✦</text>
+      <text class="sym" transform="rotate(48.461538) translate(0,-250)">✧</text>
+      <text class="sym" transform="rotate(62.3076918) translate(0,-250)">✪</text>
+      <text class="sym" transform="rotate(76.1538456) translate(0,-250)">✫</text>
+      <text class="sym" transform="rotate(90) translate(0,-250)">☀</text>
+      <text class="sym" transform="rotate(103.846154) translate(0,-250)">☁</text>
+      <text class="sym" transform="rotate(117.692308) translate(0,-250)">☂</text>
+      <text class="sym" transform="rotate(131.538462) translate(0,-250)">☃</text>
+      <text class="sym" transform="rotate(145.384616) translate(0,-250)">☄</text>
+      <text class="sym" transform="rotate(159.23077) translate(0,-250)">☾</text>
+      <text class="sym" transform="rotate(173.076924) translate(0,-250)">☽</text>
+      <text class="sym" transform="rotate(186.923078) translate(0,-250)">♠</text>
+      <text class="sym" transform="rotate(200.769232) translate(0,-250)">♣</text>
+      <text class="sym" transform="rotate(214.615386) translate(0,-250)">♥</text>
+      <text class="sym" transform="rotate(228.46154) translate(0,-250)">♦</text>
+      <text class="sym" transform="rotate(242.307694) translate(0,-250)">♜</text>
+      <text class="sym" transform="rotate(256.153848) translate(0,-250)">♞</text>
+    </g>
+  </g>
+</svg>

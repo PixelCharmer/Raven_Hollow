@@ -1,0 +1,187 @@
+.room3 {
+    position: relative;
+    min-height: 100dvh;
+    width: 100%;
+    background: center / cover no-repeat;
+    overflow: hidden;
+    color: #e9edf7;
+
+    .elsie {
+        position: absolute;
+        left: clamp(5%, 8vw, 12%);
+        bottom: 0;
+        height: min(50vh, 600px);
+        transform: translateY(-6%);
+        object-fit: contain;
+        pointer-events: none;
+        z-index: 3;
+        animation: elsiePulse 2.8s ease-in-out infinite;
+    }
+
+    @keyframes elsiePulse {
+        0%, 100% {
+            opacity: 0.9;
+        }
+
+        50% {
+            opacity: 1;
+        }
+    }
+    /* SIGNPOSTS
+     Buttons with background images so you can control exact sizes.
+     Tweak left/top/width/height below to fit your background. */
+    .sign {
+        position: absolute;
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-position: center;
+        border: none;
+        padding: 0;
+        cursor: pointer;
+        z-index: 4;
+        filter: drop-shadow(0 2px 2px rgba(0,0,0,0.45));
+        transition: transform 120ms ease, filter 120ms ease, opacity 120ms ease;
+
+        &:hover {
+            transform: translateY(-2px);
+        }
+
+        &:active {
+            transform: translateY(0);
+        }
+
+        &.is-solved {
+            /* subtle solved cue without extra assets */
+            filter: drop-shadow(0 0 6px rgba(255,255,255,0.45));
+            opacity: 0.95;
+            outline: 2px solid rgba(255,255,255,0.3);
+            outline-offset: 2px;
+        }
+    }
+    /* --- INDIVIDUAL PLACEMENT + SIZE --- */
+    /* Sign 1 (Lantern) */
+    .sign--one {
+        left: 28%; /* adjust */
+        top: 34%; /* adjust */
+        width: 130px; /* adjust */
+        height: 230px; /* adjust */
+        opacity: 0.6;
+    }
+    /* Sign 2 (Scarecrow) */
+    .sign--two {
+        right: 35%; /* adjust */
+        top: 33%; /* adjust */
+        width: 130px; /* adjust */
+        height: 230px; /* adjust */
+        opacity: 0.6;
+    }
+    /* Sign 3 (Moon) */
+    .sign--three {
+        left: 12%; /* adjust */
+        bottom: 22%; /* adjust */
+        width: 260px; /* adjust */
+        height: 230px; /* adjust */
+        opacity: 0.6;
+    }
+    /* Sign 4 (Dawn) */
+    .sign--four {
+        right: 14%; /* adjust */
+        bottom: 20%; /* adjust */
+        width: 230px; /* adjust */
+        height: 230px; /* adjust */
+        opacity: 0.6;
+    }
+    /* RIDDLE DIALOG */
+    .riddle-ui {
+        position: absolute;
+        left: 50%;
+        bottom: clamp(14px, 6vh, 56px);
+        transform: translateX(-50%);
+        width: min(92vw, 920px);
+        min-height: clamp(220px, 30vh, 320px);
+        padding: clamp(14px, 2.2vh, 22px) clamp(14px, 2.6vh, 28px);
+        background: center / cover no-repeat;
+        border-radius: 14px;
+        z-index: 6;
+        display: grid;
+        grid-template-rows: auto auto auto;
+        row-gap: clamp(8px, 1.8vh, 16px);
+        color: #0c0f13;
+
+        .riddle-text {
+            font-size: clamp(14px, 2.2vw, 18px);
+            line-height: 1.5;
+            color: #1a1f27;
+            text-shadow: 0 1px 0 rgba(255,255,255,0.25);
+            white-space: pre-wrap;
+        }
+
+        .answer-row {
+            display: grid;
+            grid-template-columns: 1fr auto auto;
+            column-gap: 10px;
+
+            input {
+                width: 100%;
+                padding: 10px 12px;
+                font-size: clamp(14px, 2vw, 16px);
+                border-radius: 10px;
+                border: 1px solid rgba(0,0,0,0.25);
+                background: rgba(255,255,255,0.9);
+
+                &:focus {
+                    border-color: rgba(0,0,0,0.5);
+                    box-shadow: 0 0 0 3px rgba(0,0,0,0.07) inset;
+                }
+            }
+
+            .submit, .close {
+                padding: 10px 14px;
+                font-size: clamp(14px, 2vw, 16px);
+                border-radius: 10px;
+                border: 1px solid rgba(0,0,0,0.25);
+                background: rgba(255,255,255,0.92);
+                cursor: pointer;
+                transition: transform 120ms ease, background 120ms ease;
+
+                &:hover {
+                    transform: translateY(-1px);
+                    background: rgba(255,255,255,1);
+                }
+
+                &:active {
+                    transform: translateY(0);
+                }
+            }
+        }
+
+        .feedback {
+            min-height: 1em;
+            font-size: clamp(13px, 1.8vw, 15px);
+            color: #15202b;
+            opacity: 0.95;
+        }
+
+        .progress {
+            display: flex;
+            gap: 8px;
+            font-size: clamp(13px, 1.8vw, 15px);
+            color: #15202b;
+
+            .label {
+                opacity: 0.85;
+            }
+
+            .sequence {
+                font-weight: 700;
+            }
+        }
+    }
+}
+
+/* Reduced motion: disable pulsing */
+@media (prefers-reduced-motion: reduce) {
+    .room3 .elsie {
+        animation: none !important;
+    }
+}

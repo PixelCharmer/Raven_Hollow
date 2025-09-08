@@ -1,0 +1,230 @@
+.room4 {
+    position: relative;
+    min-height: 100dvh;
+    width: 100%;
+    background: center / cover no-repeat;
+    color: #e9edf7;
+    display: grid;
+    padding: clamp(12px, 2.5vw, 24px);
+
+    .scene {
+        display: grid;
+        gap: clamp(14px, 2.5vw, 24px);
+        grid-template-columns: 1fr;
+        align-items: start;
+        width: min(1200px, 100%);
+        margin: 0 auto;
+    }
+    /* Invisible positioning surface (no background box) */
+    .board {
+        position: relative;
+        margin: 0 auto;
+        width: min(920px, 96vw);
+        aspect-ratio: 16 / 10;
+        background: transparent;
+        border: none;
+        border-radius: 0;
+        overflow: visible;
+    }
+    /* Nodes: faint in ALL states, clickable to toggle hints */
+    .node {
+        --dot: clamp(14px, 1.8vw, 18px);
+        --hintW: 220px;
+        /* faintness everywhere */
+        --dotAlpha: .12;
+        --dotAlphaCurrent: .12;
+        --dotAlphaReached: .12;
+        --dotAlphaFuture: .12;
+        --dotBorder: rgba(255,255,255,0.08);
+        position: absolute;
+        transform: translate(-50%, -50%);
+        display: grid;
+        place-items: center;
+
+        .hotspot {
+            display: grid;
+            place-items: center;
+            cursor: pointer;
+            outline: none;
+
+            &:focus .dot {
+                box-shadow: 0 0 0 2px rgba(255,255,255,0.25);
+            }
+
+            &:hover .dot {
+                transform: translateY(-1px);
+            }
+        }
+
+        .dot {
+            width: var(--dot);
+            height: var(--dot);
+            border-radius: 50%;
+            background: rgba(255,255,255,var(--dotAlpha));
+            border: 1px solid var(--dotBorder);
+            transition: transform 120ms ease, background-color 120ms ease, box-shadow 120ms ease;
+        }
+        /* hint hidden by default; shown when [data-open] present */
+        .hintbox {
+            position: absolute;
+            top: calc(var(--dot) + 22px);
+            left: 50%;
+            transform: translateX(-50%);
+            width: var(--hintW);
+            max-width: 60vw;
+            background: rgba(14,16,22,0.72);
+            border: 1px solid rgba(255,255,255,0.14);
+            border-radius: 10px;
+            padding: 8px 10px;
+            color: #e9edf7;
+            box-shadow: 0 8px 18px rgba(0,0,0,0.35);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 140ms ease, transform 140ms ease;
+
+            p {
+                margin: 0;
+                font-size: clamp(12px, 1.2vw, 14px);
+                line-height: 1.35;
+                text-align: center;
+            }
+        }
+
+        .hintbox[data-open] {
+            opacity: 1;
+            pointer-events: auto;
+            transform: translateX(-50%) translateY(0);
+        }
+        /* States all share the same faint alpha to keep nodes stealthy */
+        &[data-current] .dot {
+            background: rgba(255,255,255,var(--dotAlphaCurrent));
+        }
+
+        &[data-reached] .dot {
+            background: rgba(255,255,255,var(--dotAlphaReached));
+        }
+
+        &[data-future] .dot {
+            background: rgba(255,255,255,var(--dotAlphaFuture));
+        }
+    }
+
+    .controls {
+        width: min(920px, 96vw);
+        margin: 0 auto;
+        background: rgba(10,12,18,0.55);
+        border: 1px solid rgba(255,255,255,0.12);
+        border-radius: 16px;
+        padding: clamp(12px, 2vw, 18px);
+        display: grid;
+        gap: clamp(10px, 1.6vw, 16px);
+
+        .stepbar {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 8px;
+
+            .status {
+                font-size: 0.95rem;
+                opacity: 0.95;
+            }
+        }
+
+        .picker {
+            h3 {
+                margin: 0 0 8px;
+                font-size: clamp(16px, 1.6vw, 18px);
+                opacity: 0.95;
+            }
+
+            .options {
+                display: grid;
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+                gap: clamp(8px, 1.2vw, 14px);
+            }
+
+            .option {
+                display: grid;
+                place-items: center;
+                gap: 6px;
+                padding: 10px;
+                border-radius: 12px;
+                border: 1px solid rgba(255,255,255,0.16);
+                background: rgba(255,255,255,0.06);
+                cursor: pointer;
+                user-select: none;
+                transition: transform 120ms ease, background 120ms ease, border 120ms ease;
+
+                img {
+                    height: clamp(34px, 6vw, 52px);
+                    width: auto;
+                    object-fit: contain;
+                    -webkit-user-drag: none;
+                }
+
+                span {
+                    font-weight: 600;
+                    letter-spacing: 0.2px;
+                }
+
+                &:hover {
+                    transform: translateY(-1px);
+                    background: rgba(255,255,255,0.09);
+                }
+
+                &:active {
+                    transform: translateY(0);
+                }
+
+                &[data-selected] {
+                    border-color: rgba(255,255,255,0.45);
+                    background: rgba(255,255,255,0.14);
+                }
+            }
+        }
+
+        .actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+
+            .btn {
+                padding: 10px 16px;
+                border-radius: 12px;
+                border: 1px solid rgba(255,255,255,0.25);
+                background: rgba(255,255,255,0.1);
+                color: #fff;
+                font-weight: 700;
+                letter-spacing: 0.3px;
+                cursor: pointer;
+                transition: transform 120ms ease, background 120ms ease;
+
+                &:disabled {
+                    opacity: 0.5;
+                    cursor: not-allowed;
+                }
+
+                &:hover:enabled {
+                    transform: translateY(-1px);
+                    background: rgba(255,255,255,0.16);
+                }
+
+                &:active:enabled {
+                    transform: translateY(0);
+                }
+            }
+
+            .btn--ghost {
+                background: transparent;
+            }
+
+            .completion {
+                flex: 1 1 100%;
+                font-weight: 600;
+                opacity: 0.95;
+            }
+        }
+    }
+}

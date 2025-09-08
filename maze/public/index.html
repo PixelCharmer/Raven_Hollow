@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#0b0b0f" />
+    <meta name="description" content="Raven Hollow: The Hollow Maze � a virtual escape room." />
+
+    <title>Raven Hollow: The Hollow Maze</title>
+
+    <!-- Preload example background (swap to your heaviest hero asset) -->
+    <link rel="preload" as="image" href="/intro_bg.png" />
+
+    <!-- System fonts for speed; you can add Google Fonts in SCSS if needed -->
+    <style>
+        /* Responsive base and reduced motion fallbacks */
+        :root {
+            color-scheme: dark;
+        }
+
+        html, body {
+            height: 100%;
+        }
+
+        body {
+            margin: 0;
+            font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+            background: #0b0b0f;
+            color: #eaeaf2;
+        }
+
+        .app-root {
+            min-height: 100dvh;
+            display: grid;
+            grid-template-rows: auto 1fr auto;
+        }
+
+        .container {
+            width: min(100% - 2rem, 1200px);
+            margin-inline: auto;
+        }
+
+        @media (min-width: 768px) {
+            .container {
+                width: min(100% - 4rem, 1200px);
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <noscript>You need JavaScript enabled to run this experience.</noscript>
+    <div id="root" class="app-root">
+        <!-- App renders here -->
+    </div>
+    <script type="module" src="/src/main.jsx"></script>
+</body>
+</html>
