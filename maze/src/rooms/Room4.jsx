@@ -67,10 +67,10 @@ export default function Room4() {
             setSelection({ dir: null, moon: null });
 
             if (step === ANSWER_SEQ.length - 1) {
-                setStatus("The final corridor brightens—an opening yawns in the corn.");
+                setStatus("The final corridor brightens and a corn open with a yawn.");
                 setComplete(true);
             } else {
-                setStatus("The path extends a little further into the maze…");
+                setStatus("The path extends a little further into the maze...");
                 setStep(step + 1);
             }
         } else {

@@ -71,7 +71,7 @@ export default function Room1() {
             title: "",
             text: "Before the fields stir, a lull drifts where dusk meets water — it begins here.",
             color: "#bde2ff", // blue
-            left: 93, top: 16,
+            left: 84, top: 16,
         },
         {
             id: "h2",
@@ -164,7 +164,7 @@ export default function Room1() {
         if (showClue) {
             const timer = setTimeout(() => {
                 navigate("/room2intro");  // 👈 route path to your Room2Intro component
-            }, 4000); // 4s delay for players to see the clue
+            }, 12000); // 4s delay for players to see the clue
 
             return () => clearTimeout(timer);
         }
@@ -284,7 +284,7 @@ export default function Room1() {
                         <p>“The Hollow family kept secrets in their journal. Find the pages scattered in the maze.”</p>
                     </div>
                     <div className="actions">
-                        <button className="btn" onClick={() => setShowClue(false)}>Close</button>
+                        <button className="btn" onClick={() => navigate("/room2intro")}>Continue Maze</button>
                         {/* Replace with navigate("/room2") when ready */}
                     </div>
                 </div>

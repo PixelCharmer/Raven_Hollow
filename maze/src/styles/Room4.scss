@@ -31,11 +31,11 @@
         --dot: clamp(14px, 1.8vw, 18px);
         --hintW: 220px;
         /* faintness everywhere */
-        --dotAlpha: .12;
-        --dotAlphaCurrent: .12;
-        --dotAlphaReached: .12;
-        --dotAlphaFuture: .12;
-        --dotBorder: rgba(255,255,255,0.08);
+        --dotAlpha: .15;
+        --dotAlphaCurrent: .15;
+        --dotAlphaReached: .15;
+        --dotAlphaFuture: .15;
+        --dotBorder: rgba(255,255,255,0.05);
         position: absolute;
         transform: translate(-50%, -50%);
         display: grid;
@@ -48,7 +48,7 @@
             outline: none;
 
             &:focus .dot {
-                box-shadow: 0 0 0 2px rgba(255,255,255,0.25);
+                box-shadow: 0 0 0 2px rgba(255,255,255,0.6);
             }
 
             &:hover .dot {

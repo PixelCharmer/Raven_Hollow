@@ -172,7 +172,7 @@ const AnswerPanel = ({ answers, setAnswers, onVerify, solved }) => {
 
             {solved && (
                 <div className="success">
-                    <strong>Correct.</strong> The pages align—the Keeper’s power frays at the edges. The path opens…
+                    <strong>Correct.</strong> The pages align the Keeper's power frays at the edges. The path opens...
                 </div>
             )}
         </div>
@@ -206,7 +206,7 @@ const Room2 = () => {
         );
         if (allCorrect) {
             setSolved(true);
-            setTimeout(() => navigate("/room3intro"), 1200);
+            setTimeout(() => navigate("/room3intro"), 7000);
         } else {
             setShowJumpscare(true);
             setTimeout(() => setShowJumpscare(false), 650);
