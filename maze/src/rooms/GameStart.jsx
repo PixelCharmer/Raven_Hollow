@@ -37,6 +37,10 @@ export default function GameStart() {
                 >
                     Enter the Gate
                 </button>
+                <div className="whispers">
+                    <br />
+                    ⚠️Please be advised that this escape room contains spooky and unsettling elements. Viewer discretion is advised
+                </div>
             </div>
         </div>
     );

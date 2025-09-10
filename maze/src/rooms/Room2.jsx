@@ -4,7 +4,7 @@ import "../styles/Room2.scss";
 
 // Backgrounds & overlays
 import room2Bg from "../assets/backgrounds/room2_bg.png";
-import jumpscareOverlay from "../assets/backgrounds/jumpscare_overlay.png";
+import jumpscareOverlay from "../assets/backgrounds/jumpscare_overlay2.png";
 
 // Room 2 elements
 import scarecrowImg from "../assets/game_elements/room2/scarecrow.png";
@@ -209,7 +209,7 @@ const Room2 = () => {
             setTimeout(() => navigate("/room3intro"), 7000);
         } else {
             setShowJumpscare(true);
-            setTimeout(() => setShowJumpscare(false), 650);
+            setTimeout(() => setShowJumpscare(false), 1000);
         }
     };
 
