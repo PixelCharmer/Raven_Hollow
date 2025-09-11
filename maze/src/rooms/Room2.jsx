@@ -223,7 +223,7 @@ const Room2 = () => {
                 className="cipher-node"
                 left="87.8%"
                 top="46%"
-                label="Inspect Stump (Cipher Wheel)"
+                label="Cipher to be decoded"
                 onClick={() => setOpenCipher(true)}
                 seen={openCipher}
             />
@@ -268,7 +268,7 @@ const Room2 = () => {
                 className="answer-node"
                 left="49%"
                 top="54%"
-                label={canAnswer ? "Submit the four words" : "Find all pages first"}
+                label={canAnswer ? "Submit the four words" : "Read all pages first"}
                 onClick={() => canAnswer && setOpenAnswerPanel(true)}
                 disabled={!canAnswer}
                 seen={allSeen}

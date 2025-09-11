@@ -20,7 +20,7 @@ const Room3Intro = () => {
                 <p>
                     <em>
                         At the crossroads of the maze, no sign will guide you. Only riddles
-                        whispered by the dead can point the way. Solve them, and the maze
+                        whispered by Elsie - the ghost of the old farmer - can lead the way. Solve them, and the maze
                         will yield its secret. Fail... and you will wander in circles until dawn.
                     </em>
                 </p>

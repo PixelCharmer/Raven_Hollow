@@ -18,7 +18,7 @@ const RIDDLES = [
 I sing but have no mouth.
 I guide but never walk.
 What am I?`,
-        canon: ["lantern", "the lantern"],
+        canon: ["lantern", "the lantern", "lanterns"],
     },
     {
         key: "scarecrow",
@@ -26,7 +26,7 @@ What am I?`,
 I guard though I have no eyes.
 In fields I keep watch —
 what am I?`,
-        canon: ["scarecrow", "a scarecrow"],
+        canon: ["scarecrow", "a scarecrow", "scare crow"],
     },
     {
         key: "moon",
@@ -42,7 +42,7 @@ what am I?`,
 I burn away the night,
 but only after shadows fall —
 what am I?`,
-        canon: ["dawn", "sunrise", "daybreak", "break of day", "day break"],
+        canon: ["dawn", "sunrise", "daybreak", "break of day", "day break", "morning", "day break", "sun rise"],
     },
 ];
 
@@ -110,7 +110,7 @@ const Room3 = () => {
                 }
             }, 4000);
         } else {
-            setFeedback("Not quite. Listen carefully and try again.");
+            setFeedback("Not quite. Try reading the riddle again");
         }
     };
 

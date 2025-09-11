@@ -23,10 +23,10 @@ const ANSWER_SEQ = [
 
 // Individually positionable, resizable nodes with their own hint text
 const NODES = [
-    { id: 1, left: "-3%", top: "66%", hint: "The first half light will always feel right", dot: "9px", hintW: "220px" },
-    { id: 2, left: "7%", top: "83%", hint: "With just a sliver of light, the honest path is the straight one", dot: "9px", hintW: "220px" },
-    { id: 3, left: "61%", top: "62%", hint: "With the full gaze overhead, choose a new direction", dot: "9px", hintW: "220px" },
-    { id: 4, left: "89%", top: "70%", hint: "When the crescent returns, advance without hesitation", dot: "9px", hintW: "220px" },
+    { id: 1, left: "-3%", top: "66%", hint: "The first half light will always feel right", dot: "10px", hintW: "220px" },
+    { id: 2, left: "7%", top: "83%", hint: "With just a sliver of light, the honest path is the straight one", dot: "10px", hintW: "220px" },
+    { id: 3, left: "61%", top: "62%", hint: "With the full gaze overhead, choose a new direction", dot: "10px", hintW: "220px" },
+    { id: 4, left: "89%", top: "70%", hint: "When the crescent returns, advance without hesitation", dot: "10px", hintW: "220px" },
 ];
 
 const DIR_CHOICES = [
@@ -67,14 +67,14 @@ export default function Room4() {
             setSelection({ dir: null, moon: null });
 
             if (step === ANSWER_SEQ.length - 1) {
-                setStatus("The final corridor brightens and a corn open with a yawn.");
+                setStatus("The final corridor brightens and a clearing begins to form.");
                 setComplete(true);
             } else {
                 setStatus("The path extends a little further into the maze...");
                 setStep(step + 1);
             }
         } else {
-            setStatus("Elsie gestures for caution. Try another pairing.");
+            setStatus("Elsie gestures with a warning. Try another pairing.");
         }
     };
 
@@ -213,9 +213,8 @@ export default function Room4() {
                             </>
                         ) : (
                             <>
-                                <div className="completion">A narrow passage shimmers ahead—freedom beckons.</div>
-                                <button className="btn" onClick={goNext}>Continue to Room 5</button>
-                                <button className="btn btn--ghost" onClick={onReset}>Replay Room 4</button>
+                                <div className="completion">A narrow passage shimmers ahead and freedom beckons.</div>
+                                <button className="btn" onClick={goNext}>Continue to the gate</button>
                             </>
                         )}
                     </div>

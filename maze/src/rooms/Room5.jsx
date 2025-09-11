@@ -16,7 +16,7 @@ const NODES = [
         id: "hex-harvest",
         title: "Slot 2",
         riddle:
-            "Painted on a barn by the edge of the maze,\nA charm against blight and ill-willed gaze.\nSix petals circle, warding the night -\nHow many points hold back the fright?",
+            "Painted on a barn by the edge of the maze,\nA charm against blight and ill-willed gaze.\nSeveral petals circle, warding the night -\nHow many points hold back the fright?",
         answer: "6",
     },
     {

@@ -1,6 +1,7 @@
 import { Routes, Route, Navigate } from 'react-router-dom';
 
 import GameStart from './rooms/GameStart.jsx';
+import Room1Intro from './rooms/Room1Intro.jsx';
 import Room1 from './rooms/Room1.jsx';
 import Room2Intro from './rooms/Room2Intro.jsx';
 import Room2 from './rooms/Room2.jsx';
@@ -16,6 +17,7 @@ export default function App() {
     return (
         <Routes>
             <Route path="/" element={<GameStart />} />
+            <Route path="/room1intro" element={<Room1Intro />} />
             <Route path="/room1" element={<Room1 />} />
             <Route path="/room2intro" element={<Room2Intro />} />
             <Route path="/room2" element={<Room2 />} />

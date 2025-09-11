@@ -19,23 +19,27 @@ export default function GameStart() {
             <div className="content">
                 <h1 className="title">The Lantern Gate</h1>
                 <p className="narration">
-                    Five haunted lanterns guard the way forward. Each flame is bound to a
-                    tale whispered by the Hollow spirits. Only by lighting them in the right
-                    order will the gate open. But one lantern is cursed—touch it, and shadows
-                    lash back.
+                    Every Halloween, the town of Raven Hollow hosts a legendary corn maze challenge. This year, the maze has been expanded
+                    into the eerie grounds of the old Hollow Farm—abandoned since the mysterious disappearance of the Hollow family decades ago.
+
+                    You and your team of thrill - seekers enter the maze at dusk, eager for adventure. But as the sun sets, the maze begins to shift.
+                    Paths rearrange, whispers echo through the stalks, and strange symbols appear on the ground. The exit vanishes. You're trapped...
+
+                    A gust of wind is stirred up and you a gostly whisper
                 </p>
 
                 <div className="whispers">
-                    Ghostly whispers braid through the corn—lullabies, warnings, chants,
-                    moonstruck songs...
+                    "You must uncover the truth behind the Hollow family's curse to escape. Solve the riddles, unlock the secrets,
+                    and beware the Scarecrow Keeper he walks when the moon is high."
+
                 </div>
 
                 <button
                     className="cta"
-                    onClick={() => navigate("/room1")}
+                    onClick={() => navigate("/room1intro")}
                     aria-label="Begin at the Lantern Gate"
                 >
-                    Enter the Gate
+                    Enter the Maze
                 </button>
                 <div className="whispers">
                     <br />

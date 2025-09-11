@@ -92,17 +92,15 @@ export default function GameExit({
                 {/* Fixed feedback link that stays visible */}
                 <div className="feedback-block">
                     <h2 className="credits-heading">Log Your Groups Exit Time</h2>
-                    <ul className="credits-names">
-                        <li>
+                    <div className="credits-names">
                             <a
-                                href="https://forms.gle/uvPk9JVSndkmA14r5"
+                                href="https://forms.gle/46N758CCxdXQK1gR7"
                                 target="_blank"
                                 rel="noopener noreferrer"
                             >
                                 Click here to log your time
                             </a>
-                        </li>
-                    </ul>
+                    </div>
                 </div>
             </div>
             {showSparkles && <div className="sparkle-layer" aria-hidden="true" />}

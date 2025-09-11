@@ -30,7 +30,6 @@
     .node {
         --dot: clamp(14px, 1.8vw, 18px);
         --hintW: 220px;
-        /* faintness everywhere */
         --dotAlpha: .15;
         --dotAlphaCurrent: .15;
         --dotAlphaReached: .15;
@@ -52,7 +51,8 @@
             }
 
             &:hover .dot {
-                transform: translateY(-1px);
+                transform: translateY(-1px) scale(1.15);
+                box-shadow: 0 0 10px rgba(255, 255, 220, 1), 0 0 20px rgba(255, 255, 180, 0.7);
             }
         }
 
@@ -62,7 +62,9 @@
             border-radius: 50%;
             background: rgba(255,255,255,var(--dotAlpha));
             border: 1px solid var(--dotBorder);
-            transition: transform 120ms ease, background-color 120ms ease, box-shadow 120ms ease;
+            transition: transform 120ms ease, background-color 120ms ease, box-shadow 200ms ease;
+            box-shadow: 0 0 6px rgba(255, 255, 200, 0.8), 0 0 12px rgba(255, 255, 160, 0.5);
+            animation: nodePulse 3s ease-in-out infinite;
         }
         /* hint hidden by default; shown when [data-open] present */
         .hintbox {
@@ -95,7 +97,7 @@
             pointer-events: auto;
             transform: translateX(-50%) translateY(0);
         }
-        /* States all share the same faint alpha to keep nodes stealthy */
+
         &[data-current] .dot {
             background: rgba(255,255,255,var(--dotAlphaCurrent));
         }
@@ -226,5 +228,16 @@
                 opacity: 0.95;
             }
         }
+    }
+}
+
+/* Subtle breathing glow */
+@keyframes nodePulse {
+    0%, 100% {
+        box-shadow: 0 0 6px rgba(255, 255, 200, 0.8), 0 0 12px rgba(255, 255, 160, 0.5);
+    }
+
+    50% {
+        box-shadow: 0 0 10px rgba(255, 255, 220, 1), 0 0 20px rgba(255, 255, 180, 0.7);
     }
 }
