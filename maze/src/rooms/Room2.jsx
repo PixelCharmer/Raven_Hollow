@@ -209,7 +209,7 @@ const Room2 = () => {
             setTimeout(() => navigate("/room3intro"), 7000);
         } else {
             setShowJumpscare(true);
-            setTimeout(() => setShowJumpscare(false), 1000);
+            setTimeout(() => setShowJumpscare(false), 4000);
         }
     };
 

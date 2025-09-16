@@ -320,32 +320,33 @@
         }
     }
     /* Wrong attempt overlay */
-    .jumpscare {
-        position: fixed;
-        inset: 0;
-        display: grid;
-        place-items: center;
-        z-index: 60;
-        background: rgba(0, 0, 0, 0.9);
-        animation: scareFade 0.65s ease both;
+.jumpscare {
+    position: fixed;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    z-index: 60;
+    background: rgba(0, 0, 0, 0.9);
+    animation: scareFade 0.65s ease both;
 
-        img {
-            width: min(90vw, 900px);
-            height: auto;
-            filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.8));
-        }
+    img {
+        width: 100vw; /* fill the full width of the viewport */
+        height: 100vh; /* fill the full height of the viewport */
+        object-fit: cover; /* keep proportions but crop if needed */
+        filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.8));
+    }
+}
+
+@keyframes scareFade {
+    0% {
+        opacity: 0;
     }
 
-    @keyframes scareFade {
-        0% {
-            opacity: 0;
-        }
-
-        20% {
-            opacity: 1;
-        }
-
-        100% {
-            opacity: 0;
-        }
+    20% {
+        opacity: 1;
     }
+
+    100% {
+        opacity: 0;
+    }
+}
