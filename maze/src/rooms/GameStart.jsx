@@ -25,12 +25,12 @@ export default function GameStart() {
                     You and your team of thrill - seekers enter the maze at dusk, eager for adventure. But as the sun sets, the maze begins to shift.
                     Paths rearrange, whispers echo through the stalks, and strange symbols appear on the ground. The exit vanishes. You're trapped...
 
-                    A gust of wind is stirred up and you a gostly whisper
+                    A gust of wind is stirred up and you a ghostly whisper
                 </p>
 
                 <div className="whispers">
                     "You must uncover the truth behind the Hollow family's curse to escape. Solve the riddles, unlock the secrets,
-                    and beware the Scarecrow Keeper he walks when the moon is high."
+                    and beware the Scarecrow Keeper who walks when the moon is high."
 
                 </div>
 

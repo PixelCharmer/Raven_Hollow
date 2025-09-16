@@ -9,14 +9,14 @@ const NODES = [
         id: "thorn-gate",
         title: "Slot 1",
         riddle:
-            "At the maze’s end, the iron waits,\nIts crown of points seals shut the gates.\nSharp as teeth, they pierce the sky -\nOnly those who see can pass by.",
+            "At the maze’s end, the iron waits,\nIts crown of points seals the gates.\nSharp as teeth, they pierce the sky -\nOnly those who see can pass by.",
         answer: "7",
     },
     {
         id: "hex-harvest",
         title: "Slot 2",
         riddle:
-            "Painted on a barn by the edge of the maze,\nA charm against blight and ill-willed gaze.\nSeveral petals circle, warding the night -\nHow many points hold back the fright?",
+            "Painted on a barn by the edge of the maze,\nA charm against an ill-willed gaze.\nSeveral petals circle, warding the night -\nHow many points hold back the fright?",
         answer: "6",
     },
     {
@@ -30,7 +30,7 @@ const NODES = [
         id: "crow-crossroads",
         title: "Slot 4",
         riddle:
-            "Where crows debate which way to soar,\nThe path splits clean no more.\nChoose with care or wander more -\nHow many ways from the crossing core?",
+            "Where crows debate which sky to claim,\nThe paths converge yet none the same.\nStep with care, lest you implore -\nHow many ways from the crossing’s core?",
         answer: "4",
     },
 ];
