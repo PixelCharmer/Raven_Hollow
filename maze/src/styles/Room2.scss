@@ -319,7 +319,7 @@
             border-radius: 10px;
         }
     }
-    /* Wrong attempt overlay */
+/* Wrong attempt overlay (pop in, hold, fade out) */
 .jumpscare {
     position: fixed;
     inset: 0;
@@ -327,26 +327,29 @@
     place-items: center;
     z-index: 60;
     background: rgba(0, 0, 0, 0.9);
-    animation: scareFade 0.65s ease both;
+    animation: scareFade 3s ease both; /* run full 3s */
+    pointer-events: none;
 
     img {
-        width: 100vw; /* fill the full width of the viewport */
-        height: 100vh; /* fill the full height of the viewport */
-        object-fit: cover; /* keep proportions but crop if needed */
+        width: 100vw; /* full width */
+        height: 100vh; /* full height */
+        object-fit: cover; /* no distortion */
         filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.8));
     }
 }
 
+/* Pop in instantly, stay visible, then fade out */
 @keyframes scareFade {
     0% {
+        opacity: 2;
+    }
+    /* immediately visible */
+    85% {
         opacity: 0;
     }
-
-    20% {
-        opacity: 1;
-    }
-
+    /* hold full opacity */
     100% {
         opacity: 0;
     }
+    /* fade out at the end */
 }
