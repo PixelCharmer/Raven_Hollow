@@ -1,4 +1,4 @@
-/* Room 2 (clean, balanced braces) */
+﻿/* Room 2 (clean, balanced braces) */
 .room2 {
     position: relative;
     min-height: 100dvh;
@@ -147,14 +147,24 @@
         display: grid;
         gap: 14px;
     }
-    /* Cipher wheel (two images) */
+    /* ───────────── Cipher wheel (PANEL ONLY CHANGED) ───────────── */
     .cipher-panel {
+        /* Make the panel itself compact with no big blank area */
         display: grid;
-        gap: 12px;
-
+        grid-auto-flow: row; /* instruction → wheel → controls (stacked) */
+        justify-items: center;
+        align-items: start;
+        gap: 8px; /* tighter spacing */
+        text-align: center; /* centers the single-line instruction */
+        /* keep the panel from stretching wide; hug content */
+        max-width: min(64vw, 540px);
+        margin-inline: auto;
+        /* Wheel container */
         .wheel-img-wrap {
             position: relative;
-            width: min(68vw, 420px);
+            /* smaller footprint: never wider than 56vw, 340px, or 60svh */
+            width: min(56vw, 340px, 60svh);
+            height: width; /* ignored, but kept for clarity */
             aspect-ratio: 1 / 1;
             display: grid;
             place-items: center;
@@ -174,182 +184,148 @@
                 transition: transform 0.25s ease;
                 transform-origin: 50% 50%;
             }
-
-            .wheel-controls {
-                position: absolute;
-                bottom: -46px;
-                display: flex;
-                gap: 10px;
-                align-items: center;
-
-                button {
-                    padding: 6px 10px;
-                    border: 1px solid #d4a373;
-                    background: #3a2e1f;
-                    color: #f5e6c5;
-                    border-radius: 8px;
-                    cursor: pointer;
-                    transition: transform 0.15s ease, box-shadow 0.15s ease;
-
-                    &:hover {
-                        transform: translateY(-1px);
-                        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
-                    }
-                }
-                /* .rot-label { removed } */
-            }
         }
-    }
-}
-    /* Page viewer */
-    .page-viewer {
-        display: grid;
-        gap: 12px;
-        grid-template-columns: 1fr;
-
-        @media (min-width: 820px) {
-            grid-template-columns: 1fr 1fr;
-        }
-
-        .page-img-wrap {
-            display: grid;
-            place-items: center;
-
-            .page-img {
-                width: min(80vw, 520px);
-                height: auto;
-                filter: drop-shadow(0 10px 18px rgba(0, 0, 0, 0.45));
-                border-radius: 6px;
-            }
-        }
-
-        .page-meta {
-            display: grid;
-            gap: 8px;
-
-            h2 {
-                margin: 4px 0;
-            }
-
-            .encoded {
-                .label {
-                    opacity: 0.8;
-                    margin-bottom: 4px;
-                }
-
-                .symbols {
-                    font-size: 24px;
-                    letter-spacing: 0.08em;
-                    background: rgba(255, 255, 255, 0.05);
-                    border: 1px solid rgba(212, 163, 115, 0.25);
-                    border-radius: 8px;
-                    padding: 10px 12px;
-                    width: fit-content;
-                }
-            }
-
-            .hint {
-                opacity: 0.9;
-            }
-        }
-    }
-    /* Answer panel */
-    .answer-panel {
-        display: grid;
-        gap: 10px;
-
-        .grid {
-            display: grid;
-            gap: 10px;
-            grid-template-columns: 1fr;
-
-            @media (min-width: 720px) {
-                grid-template-columns: 1fr 1fr;
-            }
-        }
-
-        .field {
-            display: grid;
-            gap: 6px;
-
-            label {
-                opacity: 0.85;
-            }
-
-            input {
-                padding: 10px 12px;
-                border-radius: 10px;
-                border: 1px solid rgba(212, 163, 115, 0.4);
-                background: #0f0d0a;
-                color: #f5e6c5;
-                font-weight: 700;
-                letter-spacing: 0.06em;
-            }
-
-            .caps {
-                text-transform: uppercase;
-            }
-        }
-
-        .actions {
+        /* Controls sit directly under the wheel, tight spacing */
+        .wheel-controls {
+            margin-top: 4px;
             display: flex;
-            gap: 12px;
-            justify-content: flex-end;
+            gap: 10px;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
 
-            .verify {
-                padding: 10px 14px;
-                border-radius: 10px;
+            button {
+                padding: 6px 10px;
                 border: 1px solid #d4a373;
                 background: #3a2e1f;
                 color: #f5e6c5;
+                border-radius: 8px;
                 cursor: pointer;
+                transition: transform 0.15s ease, box-shadow 0.15s ease;
 
-                &:disabled {
-                    opacity: 0.45;
-                    cursor: not-allowed;
+                &:hover {
+                    transform: translateY(-1px);
+                    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
                 }
             }
         }
-
-        .success {
-            margin-top: 6px;
-            padding: 10px 12px;
-            border: 1px solid rgba(106, 182, 73, 0.45);
-            background: rgba(106, 182, 73, 0.15);
-            border-radius: 10px;
-        }
-    }
-/* Wrong attempt overlay (pop in, hold, fade out) */
-.jumpscare {
-    position: fixed;
-    inset: 0;
-    display: grid;
-    place-items: center;
-    z-index: 60;
-    background: rgba(0, 0, 0, 0.9);
-    animation: scareFade 3s ease both; /* run full 3s */
-    pointer-events: none;
-
-    img {
-        width: 100vw; /* full width */
-        height: 100vh; /* full height */
-        object-fit: cover; /* no distortion */
-        filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.8));
     }
 }
+/* Page viewer */
+.page-viewer {
+    display: grid;
+    gap: 12px;
+    grid-template-columns: 1fr;
 
-/* Pop in instantly, stay visible, then fade out */
-@keyframes scareFade {
-    0% {
-        opacity: 2;
+    @media (min-width: 820px) {
+        grid-template-columns: 1fr 1fr;
     }
-    /* immediately visible */
-    85% {
-        opacity: 0;
+
+    .page-img-wrap {
+        display: grid;
+        place-items: center;
+
+        .page-img {
+            width: min(80vw, 520px);
+            height: auto;
+            filter: drop-shadow(0 10px 18px rgba(0, 0, 0, 0.45));
+            border-radius: 6px;
+        }
     }
-    /* hold full opacity */
-    100% {
-        opacity: 0;
+
+    .page-meta {
+        display: grid;
+        gap: 8px;
+
+        h2 {
+            margin: 4px 0;
+        }
+
+        .encoded {
+            .label {
+                opacity: 0.8;
+                margin-bottom: 4px;
+            }
+
+            .symbols {
+                font-size: 24px;
+                letter-spacing: 0.08em;
+                background: rgba(255, 255, 255, 0.05);
+                border: 1px solid rgba(212, 163, 115, 0.25);
+                border-radius: 8px;
+                padding: 10px 12px;
+                width: fit-content;
+            }
+        }
+
+        .hint {
+            opacity: 0.9;
+        }
     }
-    /* fade out at the end */
+}
+/* Answer panel */
+.answer-panel {
+    display: grid;
+    gap: 10px;
+
+    .grid {
+        display: grid;
+        gap: 10px;
+        grid-template-columns: 1fr;
+
+        @media (min-width: 720px) {
+            grid-template-columns: 1fr 1fr;
+        }
+    }
+
+    .field {
+        display: grid;
+        gap: 6px;
+
+        label {
+            opacity: 0.85;
+        }
+
+        input {
+            padding: 10px 12px;
+            border-radius: 10px;
+            border: 1px solid rgba(212, 163, 115, 0.4);
+            background: #0f0d0a;
+            color: #f5e6c5;
+            font-weight: 700;
+            letter-spacing: 0.06em;
+        }
+
+        .caps {
+            text-transform: uppercase;
+        }
+    }
+
+    .actions {
+        display: flex;
+        gap: 12px;
+        justify-content: flex-end;
+
+        .verify {
+            padding: 10px 14px;
+            border-radius: 10px;
+            border: 1px solid #d4a373;
+            background: #3a2e1f;
+            color: #f5e6c5;
+            cursor: pointer;
+
+            &:disabled {
+                opacity: 0.45;
+                cursor: not-allowed;
+            }
+        }
+    }
+
+    .success {
+        margin-top: 6px;
+        padding: 10px 12px;
+        border: 1px solid rgba(106, 182, 73, 0.45);
+        background: rgba(106, 182, 73, 0.15);
+        border-radius: 10px;
+    }
 }

@@ -4,7 +4,6 @@ import "../styles/Room2.scss";
 
 // Backgrounds & overlays
 import room2Bg from "../assets/backgrounds/room2_bg.png";
-import jumpscareOverlay from "../assets/backgrounds/jumpscare_overlay2.png";
 
 // Room 2 elements
 import scarecrowImg from "../assets/game_elements/room2/scarecrow.png";
@@ -49,7 +48,9 @@ const Modal = ({ open, onClose, children, wide = false }) => {
     return (
         <div className="modal-overlay" onClick={onClose} role="dialog" aria-modal="true">
             <div className={`modal ${wide ? "wide" : ""}`} onClick={(e) => e.stopPropagation()}>
-                <button className="modal-close" onClick={onClose} aria-label="Close">×</button>
+                <button className="modal-close" onClick={onClose} aria-label="Close">
+                    ×
+                </button>
                 <div className="modal-body">{children}</div>
             </div>
         </div>
@@ -75,9 +76,12 @@ const CipherWheel = () => {
                     style={{ transform: `rotate(${rotation}deg)` }}
                 />
                 <div className="wheel-controls">
-                    <button onClick={() => rotate(-1)} aria-label="Rotate Left">⟲</button>
-                    {/* label hidden by request */}
-                    <button onClick={() => rotate(1)} aria-label="Rotate Right">⟳</button>
+                    <button onClick={() => rotate(-1)} aria-label="Rotate Left">
+                        ⟲
+                    </button>
+                    <button onClick={() => rotate(1)} aria-label="Rotate Right">
+                        ⟳
+                    </button>
                 </div>
             </div>
         </div>
@@ -100,7 +104,7 @@ const PageViewer = ({ page }) => (
     </div>
 );
 
-const AnswerPanel = ({ answers, setAnswers, onVerify, solved }) => {
+const AnswerPanel = ({ answers, setAnswers, onVerify, solved, error }) => {
     const onEdit = (id, v) => setAnswers((a) => ({ ...a, [id]: toUpperAZ(v) }));
     const allFilled = [1, 2, 3, 4].every((i) => (answers[i] || "").length > 0);
 
@@ -110,58 +114,21 @@ const AnswerPanel = ({ answers, setAnswers, onVerify, solved }) => {
             <p className="muted">Decode the journal pages</p>
 
             <div className="grid">
-                <div className="field">
-                    <label>Page 1</label>
-                    <input
-                        inputMode="latin"
-                        autoCapitalize="characters"
-                        autoCorrect="off"
-                        spellCheck="false"
-                        className="caps"
-                        value={answers[1] || ""}
-                        onChange={(e) => onEdit(1, e.target.value)}
-                        placeholder="DECODE"
-                    />
-                </div>
-                <div className="field">
-                    <label>Page 2</label>
-                    <input
-                        inputMode="latin"
-                        autoCapitalize="characters"
-                        autoCorrect="off"
-                        spellCheck="false"
-                        className="caps"
-                        value={answers[2] || ""}
-                        onChange={(e) => onEdit(2, e.target.value)}
-                        placeholder="DECODE"
-                    />
-                </div>
-                <div className="field">
-                    <label>Page 3</label>
-                    <input
-                        inputMode="latin"
-                        autoCapitalize="characters"
-                        autoCorrect="off"
-                        spellCheck="false"
-                        className="caps"
-                        value={answers[3] || ""}
-                        onChange={(e) => onEdit(3, e.target.value)}
-                        placeholder="DECODE"
-                    />
-                </div>
-                <div className="field">
-                    <label>Page 4</label>
-                    <input
-                        inputMode="latin"
-                        autoCapitalize="characters"
-                        autoCorrect="off"
-                        spellCheck="false"
-                        className="caps"
-                        value={answers[4] || ""}
-                        onChange={(e) => onEdit(4, e.target.value)}
-                        placeholder="DECODE"
-                    />
-                </div>
+                {[1, 2, 3, 4].map((i) => (
+                    <div className="field" key={i}>
+                        <label>{`Page ${i}`}</label>
+                        <input
+                            inputMode="latin"
+                            autoCapitalize="characters"
+                            autoCorrect="off"
+                            spellCheck="false"
+                            className="caps"
+                            value={answers[i] || ""}
+                            onChange={(e) => onEdit(i, e.target.value)}
+                            placeholder="DECODE"
+                        />
+                    </div>
+                ))}
             </div>
 
             <div className="actions">
@@ -170,9 +137,10 @@ const AnswerPanel = ({ answers, setAnswers, onVerify, solved }) => {
                 </button>
             </div>
 
+            {error && !solved && <div className="feedback error">Not quite. Recheck the pages.</div>}
             {solved && (
                 <div className="success">
-                    <strong>Correct.</strong> The pages align the Keeper's power frays at the edges. The path opens...
+                    <strong>Correct.</strong> The pages align; the Keeper’s power frays. The path opens…
                 </div>
             )}
         </div>
@@ -187,8 +155,8 @@ const Room2 = () => {
     const [openAnswerPanel, setOpenAnswerPanel] = useState(false);
     const [answers, setAnswers] = useState({ 1: "", 2: "", 3: "", 4: "" });
     const [seenPages, setSeenPages] = useState({ 1: false, 2: false, 3: false, 4: false });
-    const [showJumpscare, setShowJumpscare] = useState(false);
     const [solved, setSolved] = useState(false);
+    const [error, setError] = useState(false);
 
     // gate: require viewing all pages once
     const gateAnswerUntilSeenAll = true;
@@ -206,10 +174,11 @@ const Room2 = () => {
         );
         if (allCorrect) {
             setSolved(true);
+            setError(false);
             setTimeout(() => navigate("/room3intro"), 7000);
         } else {
-            setShowJumpscare(true);
-            setTimeout(() => setShowJumpscare(false), 2000);
+            setError(true); // simple textual feedback; no jumpscare here
+            // optional quick shake class could be toggled via CSS if you want
         }
     };
 
@@ -268,7 +237,7 @@ const Room2 = () => {
                 className="answer-node"
                 left="49%"
                 top="54%"
-                label={canAnswer ? "Submit the four words" : "Read all pages first"}
+                label={canAnswer ? "Submit the four words" : "Read all four pages first"}
                 onClick={() => canAnswer && setOpenAnswerPanel(true)}
                 disabled={!canAnswer}
                 seen={allSeen}
@@ -276,8 +245,9 @@ const Room2 = () => {
 
             {/* Modals */}
             <Modal open={openCipher} onClose={() => setOpenCipher(false)} wide>
-                <h2>Hidden Cipher Wheel</h2>
-                <p className="muted">Rotate until north faces east.</p>
+                <div>
+                    <p className="muted">Rotate until <strong>N</strong>orth faces East.</p>
+                </div>
                 <CipherWheel />
             </Modal>
 
@@ -292,6 +262,7 @@ const Room2 = () => {
                         setAnswers={setAnswers}
                         onVerify={onVerify}
                         solved={solved}
+                        error={error}
                     />
                 ) : (
                     <div className="answer-panel">
@@ -306,13 +277,6 @@ const Room2 = () => {
                     </div>
                 )}
             </Modal>
-
-            {/* wrong attempt overlay */}
-            {showJumpscare && (
-                <div className="jumpscare">
-                    <img src={jumpscareOverlay} alt="" aria-hidden="true" />
-                </div>
-            )}
         </div>
     );
 };
